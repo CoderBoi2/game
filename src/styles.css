@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap");
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+html,
+body {
+  @apply bg-slate-800 text-slate-200 h-full;
+}
+
+h1 {
+  @apply text-6xl font-bold;
+}
+
+h2 {
+  @apply text-3xl font-bold;
+}
+
+a {
+  @apply text-blue-300 cursor-pointer hover:text-blue-400 transition-colors;
+}
+
+button.primary {
+  @apply px-4 py-2 rounded-md bg-gradient-to-b from-emerald-500 to-emerald-700 text-white font-medium hover:ring-2 hover:ring-emerald-600/70 transition-all duration-300 active:from-emerald-700 active:to-emerald-700 disabled:from-slate-500 disabled:to-slate-500;
+}
+
+button.secondary {
+  @apply px-4 py-2 rounded-md bg-slate-500 text-white font-medium hover:ring-2 hover:ring-slate-600/70 transition-all duration-300 active:bg-slate-700;
+}

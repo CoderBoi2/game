@@ -1,0 +1,42 @@
+<div class="flex flex-col items-center h-full pb-4">
+  <header class="flex w-full justify-center align-middle">
+    <app-rounds-display class="w-full md:w-1/4 mx-4 my-8"></app-rounds-display>
+  </header>
+  <div class="flex md:flex-grow-0 flex-grow justify-center">
+    <div
+      class="grid grid-cols-2 gap-2 mx-2 w-full h-full relative"
+      *ngIf="items$ | async as items; else loading"
+      [@nextRoundTransition]="items"
+    >
+      <app-option-card
+        *ngFor="let item of items"
+        class="capitalize md:h-56 h-full"
+        title="{{ item.title }}"
+        imageUrl="{{ item.imageUrl }}"
+        postId="{{ item.postId }}"
+        [@cardSelectTransition]="checkIfCardSelected(item.postId)"
+      ></app-option-card>
+    </div>
+  </div>
+</div>
+
+<ng-template #loading>
+  <div
+    class="w-full md:w-2/3 mt-12 md:mt-24 flex flex-col gap-y-4 items-center justify-center"
+  >
+    <div class="flex text-center justify-center items-center text-emerald-400">
+      <div class="dot">
+        <div>·</div>
+      </div>
+      <div class="dot">
+        <div>·</div>
+      </div>
+      <div class="dot">
+        <div>·</div>
+      </div>
+    </div>
+    <span class="text-center animate-pulse text-sm font-bold"
+      >Choose which headline is REAL</span
+    >
+  </div>
+</ng-template>

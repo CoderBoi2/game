@@ -1,0 +1,40 @@
+<div class="p-4 w-full flex flex-col items-center justify-center">
+  <h2 class="flex flex-row gap-x-2 my-8">
+    ⏱️
+    <span>{{ convertMs(time!) }}</span>
+  </h2>
+  <h2
+    @badgeAnim
+    class="flex w-full flex-wrap gap-2 md:w-1/2 items-center justify-center mb-16"
+  >
+    <app-result-badge
+      *ngFor="let history of answerHistory; let i = index"
+      [result]="history"
+      [index]="i"
+      [selectedRound]="selectedRound"
+      (click)="setRoundToShow(i)"
+    ></app-result-badge>
+  </h2>
+
+  <div class="flex w-full md:w-1/2 gap-x-4 justify-around mb-8">
+    <button class="secondary w-full" routerLink="/">Home</button>
+    <button
+      class="primary w-full"
+      [disabled]="!buttonActive"
+      (click)="writeToStore()"
+    >
+      {{ challengeUrl ? "Share" : "Challenge" }}
+    </button>
+  </div>
+
+  <div [@listAnim]="itemsToShow" class="w-full md:w-1/2">
+    <app-result-card
+      *ngFor="let item of itemsToShow"
+      articleUrl="{{ item.articleUrl }}"
+      imageUrl="{{ item.imageUrl }}"
+      title="{{ item.title }}"
+      [isReal]="item.isReal"
+    >
+    </app-result-card>
+  </div>
+</div>
